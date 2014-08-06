@@ -1,4 +1,4 @@
 Ts3-JAPI
 ========
 
-A fast thread safe api for the teamspeak 3 serverquery
+An easy to use thread safe api for the teamspeak 3 serverquery.
