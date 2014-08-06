@@ -49,7 +49,7 @@ public class ServerQuery implements AutoCloseable {
         // }
         List<Command> cmds = new ArrayList<>();
         //@formatter:off
-        for (int i = 0; i < 500000; i++) {
+        for (int i = 0; i < 10; i++) {
             cmds.add(new CmdWhoAmI());
         }
         //@formatter:on
@@ -67,8 +67,7 @@ public class ServerQuery implements AutoCloseable {
     }
 
     private ServerQueryConfig               config;
-    private String                          host;
-    private int                             port;
+
     private int                             commandTimeout = 5000;
     private ConcurrentLinkedQueue<Sendable> commandQueue   = new ConcurrentLinkedQueue<>();
 
@@ -86,8 +85,6 @@ public class ServerQuery implements AutoCloseable {
     private ServerQuery() {}
 
     public ServerQuery(ServerQueryConfig config) throws UnknownHostException, IOException {
-        host = config.host();
-        port = config.port();
         this.config = config;
         openConnection();
     }
@@ -143,7 +140,7 @@ public class ServerQuery implements AutoCloseable {
     }
 
     private void openConnection() throws UnknownHostException, IOException {
-        socket = new Socket(host, port);
+        socket = new Socket(config.host(), config.port(), config.localAddress(), config.localPort());
 
         br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
         ps = new PrintStream(socket.getOutputStream(), true, "UTF-8");
@@ -193,6 +190,6 @@ public class ServerQuery implements AutoCloseable {
             send(cmd);
             consumer.accept(cmd);
         }, "TS3-JAPI_Asynchronous-command-executor")
-        .start();
+                        .start();
     }
 }
