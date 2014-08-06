@@ -56,7 +56,7 @@ public class ServerQuery implements AutoCloseable {
 
         Instant start = Instant.now();
         for (Command c : cmds) {
-            query.doCommand(c);
+            query.send(c);
         }
         Instant end = Instant.now();
         System.out.println(cmds.size() + " commands took: " + Duration.between(start, end));
@@ -122,39 +122,6 @@ public class ServerQuery implements AutoCloseable {
         }
     }
 
-    public synchronized boolean doCommand(Sendable cmd) {
-        return doCommand(cmd, commandTimeout);
-    }
-
-    public synchronized boolean doCommand(Sendable cmd, int timeout) {
-        if (cmd.isSent()) {
-            throw new UnsupportedOperationException("You may not use a Sendable object twice!");
-        }
-        ensureOpen();
-        long start = System.currentTimeMillis();
-        commandQueue.offer(cmd);
-        while (!cmd.isAnswered() && ((System.currentTimeMillis() - start) < timeout)) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        if (!cmd.isAnswered()) {
-            return false;
-        }
-        return true;
-    }
-
-    public void doCommandAsync(Command cmd, Consumer<Command> consumer) {
-        ensureOpen();
-        new Thread(() -> {
-            doCommand(cmd);
-            consumer.accept(cmd);
-        }, "TS3-JAPI_Asynchronous-command-executor")
-        .start();
-    }
-
     private void ensureOpen() {
         Objects.requireNonNull(socket);
         if (socket.isClosed()) {
@@ -194,5 +161,38 @@ public class ServerQuery implements AutoCloseable {
         queryWriter.setSleeptime(config.writerSleeptime());
         queryWriter.setFloodRate(config.writerFloodrate());
         commandTimeout = config.commandTimeout();
+    }
+
+    public synchronized boolean send(Sendable cmd) {
+        return send(cmd, commandTimeout);
+    }
+
+    public synchronized boolean send(Sendable cmd, int timeout) {
+        if (cmd.isSent()) {
+            throw new UnsupportedOperationException("You may not use a Sendable object twice!");
+        }
+        ensureOpen();
+        long start = System.currentTimeMillis();
+        commandQueue.offer(cmd);
+        while (!cmd.isAnswered() && ((System.currentTimeMillis() - start) < timeout)) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!cmd.isAnswered()) {
+            return false;
+        }
+        return true;
+    }
+
+    public void sendAsync(Sendable cmd, Consumer<Sendable> consumer) {
+        ensureOpen();
+        new Thread(() -> {
+            send(cmd);
+            consumer.accept(cmd);
+        }, "TS3-JAPI_Asynchronous-command-executor")
+        .start();
     }
 }

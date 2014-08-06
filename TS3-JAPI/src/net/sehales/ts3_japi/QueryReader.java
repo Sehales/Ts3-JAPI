@@ -58,7 +58,7 @@ public class QueryReader extends Thread {
                                 Sendable cmd = query.getCommandQueue().peek();
                                 if (Objects.nonNull(cmd) && cmd.isSent()) {
                                     if (line.startsWith("error")) {
-                                        cmd.feedError(line);
+                                        cmd.feedError(line.substring(line.indexOf(" "), line.length()));
                                         cmd.setAnswered();
                                         query.getCommandQueue().remove();
                                     } else {

@@ -21,7 +21,7 @@ public abstract class Command extends Sendable {
 
     @Override
     public void feedError(String line) {
-        error = new QueryError(new ArrayResponse(line.substring(line.indexOf(" "), line.length())).getResponseData().get(0));
+        error = new QueryError(new ArrayResponse(line).getResponseData().get(0));
     }
 
     @Override
