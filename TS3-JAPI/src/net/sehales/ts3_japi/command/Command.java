@@ -10,6 +10,10 @@ public abstract class Command extends Sendable {
 
     private QueryError error;
 
+    public Command(String command) {
+        this.command = command;
+    }
+
     @Override
     public String buildString() {
         return command;

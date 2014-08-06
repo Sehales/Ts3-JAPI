@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 
+import net.sehales.ts3_japi.command.CmdWhoAmI;
 import net.sehales.ts3_japi.command.Command;
 import net.sehales.ts3_japi.command.Sendable;
 
@@ -49,7 +50,7 @@ public class ServerQuery implements AutoCloseable {
         List<Command> cmds = new ArrayList<>();
         //@formatter:off
         for (int i = 0; i < 500000; i++) {
-            cmds.add(new Command() {{command = "whoami";}});
+            cmds.add(new CmdWhoAmI());
         }
         //@formatter:on
 
