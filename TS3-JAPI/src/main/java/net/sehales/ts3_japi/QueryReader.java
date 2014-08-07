@@ -54,7 +54,6 @@ public class QueryReader extends Thread {
                                 // TODO implement an event system
                                 System.out.println("notfiy: " + line);
                             } else {
-                                // System.out.println("result: " + line);
                                 Sendable cmd = query.getCommandQueue().peek();
                                 if (Objects.nonNull(cmd) && cmd.isSent()) {
                                     if (line.startsWith("error")) {

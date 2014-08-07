@@ -28,6 +28,7 @@ public class ServerQuery implements AutoCloseable {
 
     private QueryReader                     queryReader;
     private QueryWriter                     queryWriter;
+    private HeartbeatThread                 heartbeat;
     long                                    lastCommand    = System.currentTimeMillis();
 
     @SuppressWarnings("unused")
@@ -49,6 +50,12 @@ public class ServerQuery implements AutoCloseable {
     @Override
     public void close() {
         ensureOpen();
+        heartbeat.end();
+        try {
+            heartbeat.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         queryWriter.end();
         try {
             queryWriter.join();
@@ -96,9 +103,11 @@ public class ServerQuery implements AutoCloseable {
 
         queryReader = new QueryReader(this);
         queryWriter = new QueryWriter(this);
+        heartbeat = new HeartbeatThread(this);
         reloadConfig();
         queryReader.start();
         queryWriter.start();
+        heartbeat.start();
 
     }
 
@@ -106,6 +115,8 @@ public class ServerQuery implements AutoCloseable {
         queryReader.setSleeptime(config.readerSleeptime());
         queryWriter.setSleeptime(config.writerSleeptime());
         queryWriter.setFloodRate(config.writerFloodrate());
+        heartbeat.setHeartbeatRate(config.heartbeatRate());
+        heartbeat.setSleepTime(config.heartbeatSleeptime());
         commandTimeout = config.commandTimeout();
     }
 
