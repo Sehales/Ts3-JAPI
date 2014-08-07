@@ -37,11 +37,13 @@ public class QueryWriter extends Thread {
     @Override
     public void run() {
         while (!stop) {
-            Sendable cmd = query.getCommandQueue().peek();
-            if (Objects.nonNull(cmd) && !cmd.isSent()) {
-                out.println(cmd.buildString());
-                cmd.setSent();
-                query.lastCommand = System.currentTimeMillis();
+            if ((System.currentTimeMillis() - query.lastCommand) > floodRate) {
+                Sendable cmd = query.getCommandQueue().peek();
+                if (Objects.nonNull(cmd) && !cmd.isSent()) {
+                    out.println(cmd.buildString());
+                    cmd.setSent();
+                    query.lastCommand = System.currentTimeMillis();
+                }
             }
             try {
                 Thread.sleep(sleep);
