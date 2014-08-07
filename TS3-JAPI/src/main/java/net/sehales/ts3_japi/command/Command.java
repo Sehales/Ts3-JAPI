@@ -1,22 +1,36 @@
 package net.sehales.ts3_japi.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sehales.ts3_japi.command.paramater.Parameter;
 import net.sehales.ts3_japi.command.response.ArrayResponse;
 import net.sehales.ts3_japi.command.response.Response;
 import net.sehales.ts3_japi.wrapper.QueryError;
 
 public abstract class Command extends Sendable {
-    protected Response response;
-    protected String   command;
-
-    private QueryError error;
+    protected List<Parameter> params = new ArrayList<>();
+    protected String          command;
+    protected Response        response;
+    protected QueryError      error;
 
     public Command(String command) {
         this.command = command;
     }
 
+    protected Command add(Parameter param) {
+        params.add(param);
+        return this;
+    }
+
     @Override
     public String buildString() {
-        return command;
+        StringBuilder sb = new StringBuilder();
+        sb.append(command);
+        for (Parameter param : params) {
+            sb.append(" ").append(param.buildString());
+        }
+        return sb.toString();
     }
 
     @Override
