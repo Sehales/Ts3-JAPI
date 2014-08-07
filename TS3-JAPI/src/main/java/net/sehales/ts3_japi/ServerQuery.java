@@ -7,64 +7,13 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 
-import net.sehales.ts3_japi.command.CmdWhoAmI;
-import net.sehales.ts3_japi.command.Command;
 import net.sehales.ts3_japi.command.Sendable;
 
 public class ServerQuery implements AutoCloseable {
-
-    public static void main(String[] args) throws UnknownHostException, IOException {
-        // Instant start = Instant.now();
-        ServerQuery query = new ServerQuery(new ServerQueryConfig().readerSleeptime(0).writerSleeptime(0).writerFloodrate(0));
-        // Instant end = Instant.now();
-        // System.out.println(Duration.between(start, end).toMillis());
-
-        // Scanner sc = new Scanner(System.in);
-        // String cmd = "";
-        // while (true) {
-        // cmd = sc.nextLine();
-        // if (cmd.equalsIgnoreCase("stop")) {
-        // break;
-        // }
-        // final String c = cmd;
-        // Command cmdObj = new Command() {
-        // {
-        // command = c;
-        // }
-        // };
-        // start = Instant.now();
-        // query.doCommand(cmdObj);
-        // System.out.println(cmdObj.getResponse().toString());
-        // System.out.println(cmdObj.getErrorResponse().toString());
-        // end = Instant.now();
-        // System.out.printf("took: %d milliseconds\n", Duration.between(start, end).toMillis());
-        // }
-        List<Command> cmds = new ArrayList<>();
-        //@formatter:off
-        for (int i = 0; i < 10; i++) {
-            cmds.add(new CmdWhoAmI());
-        }
-        //@formatter:on
-
-        Instant start = Instant.now();
-        for (Command c : cmds) {
-            query.send(c);
-        }
-        Instant end = Instant.now();
-        System.out.println(cmds.size() + " commands took: " + Duration.between(start, end));
-
-        // sc.close();
-        query.close();
-
-    }
 
     private ServerQueryConfig               config;
 
@@ -190,6 +139,6 @@ public class ServerQuery implements AutoCloseable {
             send(cmd);
             consumer.accept(cmd);
         }, "TS3-JAPI_Asynchronous-command-executor")
-                        .start();
+        .start();
     }
 }
