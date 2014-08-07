@@ -4,6 +4,10 @@
   <artifactId>ts3-japi</artifactId>
   <version>0.1.0</version>
   <name>Ts3 server query Java API</name>
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
