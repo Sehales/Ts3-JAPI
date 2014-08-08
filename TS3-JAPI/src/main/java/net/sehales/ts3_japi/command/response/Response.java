@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.command.response;
 
-public abstract class Response {
+public class Response {
     protected String rawResponse;
 
     public Response(String rawResponse) {
