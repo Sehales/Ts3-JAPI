@@ -1,4 +1,4 @@
-package net.sehales.ts3_japi.command.paramater;
+package net.sehales.ts3_japi.command.parameter;
 
 import java.util.ArrayList;
 import java.util.List;

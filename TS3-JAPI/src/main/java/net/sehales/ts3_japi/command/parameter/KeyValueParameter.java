@@ -1,4 +1,4 @@
-package net.sehales.ts3_japi.command.paramater;
+package net.sehales.ts3_japi.command.parameter;
 
 import net.sehales.ts3_japi.StringUtils;
 

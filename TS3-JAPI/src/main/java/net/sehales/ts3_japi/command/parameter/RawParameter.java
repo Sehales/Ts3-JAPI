@@ -1,4 +1,4 @@
-package net.sehales.ts3_japi.command.paramater;
+package net.sehales.ts3_japi.command.parameter;
 
 public class RawParameter extends Parameter {
     private String value;

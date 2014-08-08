@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sehales.ts3_japi.command.paramater.Parameter;
+import net.sehales.ts3_japi.command.parameter.Parameter;
 import net.sehales.ts3_japi.command.response.ArrayResponse;
 import net.sehales.ts3_japi.command.response.Response;
 import net.sehales.ts3_japi.wrapper.QueryError;
