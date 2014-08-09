@@ -3,7 +3,6 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
 import net.sehales.ts3_japi.command.parameter.RawParameter;
-import net.sehales.ts3_japi.wrapper.Wrapper;
 
 public class CmdUse extends Command {
 
@@ -14,11 +13,6 @@ public class CmdUse extends Command {
     public CmdUse(int id) {
         this();
         add(new RawParameter(id + ""));
-    }
-
-    @Override
-    public Wrapper getResponseWrapper() {
-        return null;
     }
 
     public CmdUse virtual() {

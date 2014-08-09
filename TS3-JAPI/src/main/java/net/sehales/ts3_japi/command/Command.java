@@ -7,7 +7,6 @@ import net.sehales.ts3_japi.command.parameter.Parameter;
 import net.sehales.ts3_japi.command.response.ArrayResponse;
 import net.sehales.ts3_japi.command.response.Response;
 import net.sehales.ts3_japi.wrapper.QueryError;
-import net.sehales.ts3_japi.wrapper.Wrapper;
 
 public abstract class Command extends Sendable {
     protected List<Parameter> params = new ArrayList<>();
@@ -55,11 +54,6 @@ public abstract class Command extends Sendable {
     public Response getResponse() {
         return response;
     }
-
-    /**
-     * @return null or a wrapper for the first response map of a response array
-     */
-    public abstract Wrapper getResponseWrapper();
 
     public boolean hasResponse() {
         return response != null;

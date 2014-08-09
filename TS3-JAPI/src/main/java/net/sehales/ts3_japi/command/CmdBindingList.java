@@ -12,7 +12,6 @@ public class CmdBindingList extends Command {
     /**
      * the only key this map has is {@code id}
      */
-    @Override
     public MapWrapper getResponseWrapper() {
         return new MapWrapper(((ArrayResponse) response).getResponseData().get(0));
     }

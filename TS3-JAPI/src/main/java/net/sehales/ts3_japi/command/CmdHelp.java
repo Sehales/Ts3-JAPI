@@ -37,7 +37,6 @@ public class CmdHelp extends Command {
         return response;
     }
 
-    @Override
     public HelpWrapper getResponseWrapper() {
         switch (cmdType) {
             case SINGLE_CMD_HELP: {

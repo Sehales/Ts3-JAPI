@@ -13,7 +13,6 @@ public class CmdVersion extends Command {
     /**
      * Take a look at {@link VersionInfoProperty} for possible properties you can get from that {@link MapWrapper}
      */
-    @Override
     public MapWrapper getResponseWrapper() {
         return new MapWrapper(((ArrayResponse) response).getResponseData().get(0));
     }

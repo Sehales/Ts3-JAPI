@@ -2,7 +2,6 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.ServerInstanceProperty;
-import net.sehales.ts3_japi.wrapper.Wrapper;
 
 public class CmdInstanceEdit extends Command {
 
@@ -35,11 +34,6 @@ public class CmdInstanceEdit extends Command {
     public CmdInstanceEdit addParameter(String key, String value) {
         add(new KeyValueParameter(key, value));
         return this;
-    }
-
-    @Override
-    public Wrapper getResponseWrapper() {
-        return null;
     }
 
 }
