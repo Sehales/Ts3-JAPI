@@ -1,7 +1,7 @@
 package net.sehales.ts3_japi.property;
 
 public enum VersionInfoProperty {
-    PLATFORM, BUILD, VERSION;
+    BUILD, PLATFORM, VERSION;
 
     public String getName() {
         return name().toLowerCase();
