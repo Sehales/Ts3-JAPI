@@ -28,6 +28,10 @@ public class CmdHelp extends Command {
         response.append(line);
     }
 
+    public GlobalCommandHelp getGlobalCmdHelp() {
+        return cmdType == GLOBAL_CMD_HELP ? new GlobalCommandHelp(response) : null;
+    }
+
     @Override
     public AppendableResponse getResponse() {
         return response;
@@ -44,6 +48,10 @@ public class CmdHelp extends Command {
             }
         }
         return null;
+    }
+
+    public SingleCommandHelp getSingleCmdHelp() {
+        return cmdType == SINGLE_CMD_HELP ? new SingleCommandHelp(response) : null;
     }
 
     public int getType() {

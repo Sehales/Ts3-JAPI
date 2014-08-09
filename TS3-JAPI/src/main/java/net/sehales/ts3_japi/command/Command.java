@@ -41,9 +41,7 @@ public abstract class Command extends Sendable {
 
     @Override
     public void feedResponse(String line) {
-        if (!line.isEmpty()) {
-            response = new ArrayResponse(line);
-        }
+        response = new ArrayResponse(line);
     }
 
     public QueryError getError() {

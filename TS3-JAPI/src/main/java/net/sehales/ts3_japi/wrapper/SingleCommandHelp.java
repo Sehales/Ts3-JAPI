@@ -2,15 +2,16 @@ package net.sehales.ts3_japi.wrapper;
 
 import net.sehales.ts3_japi.command.response.AppendableResponse;
 
-public class SingleCommandHelp extends HelpWrapper {
+public class SingleCommandHelp implements HelpWrapper {
 
     public SingleCommandHelp(AppendableResponse response) {
-        super(response);
+        parseResponse(response);
     }
 
-    @Override
     protected void parseResponse(AppendableResponse response) {
-        // TODO implement later
+        System.out.print(response);
+        // will implement that later...
+        // the parsing seems to get horrible annoying
     }
 
 }
