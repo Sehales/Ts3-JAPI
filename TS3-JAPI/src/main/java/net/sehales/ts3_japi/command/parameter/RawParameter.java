@@ -3,6 +3,10 @@ package net.sehales.ts3_japi.command.parameter;
 public class RawParameter extends Parameter {
     private String value;
 
+    public RawParameter(int value) {
+        this(value + "");
+    }
+
     public RawParameter(String value) {
         this.value = value;
     }

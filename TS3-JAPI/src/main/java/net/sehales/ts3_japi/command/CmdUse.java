@@ -21,12 +21,12 @@ public class CmdUse extends Command {
     }
 
     public CmdUse withId(int id) {
-        add(new KeyValueParameter("sid", id + ""));
+        add(new KeyValueParameter("sid", id));
         return this;
     }
 
     public CmdUse withPort(int port) {
-        add(new KeyValueParameter("port", port + ""));
+        add(new KeyValueParameter("port", port));
         return this;
     }
 
