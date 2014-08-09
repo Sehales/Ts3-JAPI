@@ -49,23 +49,23 @@ public class QueryReader extends Thread {
                 while (in.ready()) {
                     try {
                         String line = in.readLine();
-                        if (!line.isEmpty()) {
-                            if (line.startsWith("notify")) {
-                                // TODO implement an event system
-                                System.out.println("notfiy: " + line);
-                            } else {
-                                Sendable cmd = query.getCommandQueue().peek();
-                                if (Objects.nonNull(cmd) && cmd.isSent()) {
-                                    if (line.startsWith("error")) {
-                                        cmd.feedError(line.substring(line.indexOf(" "), line.length()));
-                                        cmd.setAnswered();
-                                        query.getCommandQueue().remove();
-                                    } else {
-                                        cmd.feedResponse(line);
-                                    }
+                        // if (!line.isEmpty()) {
+                        if (line.startsWith("notify")) {
+                            // TODO implement an event system
+                            System.out.println("notfiy: " + line);
+                        } else {
+                            Sendable cmd = query.getCommandQueue().peek();
+                            if (Objects.nonNull(cmd) && cmd.isSent()) {
+                                if (line.startsWith("error")) {
+                                    cmd.feedError(line.substring(line.indexOf(" "), line.length()));
+                                    cmd.setAnswered();
+                                    query.getCommandQueue().remove();
+                                } else {
+                                    cmd.feedResponse(line);
                                 }
                             }
                         }
+                        // }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

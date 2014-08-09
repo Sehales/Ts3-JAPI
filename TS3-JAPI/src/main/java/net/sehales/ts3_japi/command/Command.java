@@ -41,8 +41,9 @@ public abstract class Command extends Sendable {
 
     @Override
     public void feedResponse(String line) {
-        // TODO override this when implementing the "help" command
-        response = new ArrayResponse(line);
+        if (!line.isEmpty()) {
+            response = new ArrayResponse(line);
+        }
     }
 
     public QueryError getErrorResponse() {
