@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi;
 
-import net.sehales.ts3_japi.command.CmdWhoAmI;
+import net.sehales.ts3_japi.command.CmdVersion;
 
 public class HeartbeatThread extends Thread {
     private volatile boolean stop;
@@ -23,7 +23,7 @@ public class HeartbeatThread extends Thread {
     public void run() {
         while (!stop) {
             if ((System.currentTimeMillis() - query.lastCommand) > rate) {
-                query.send(new CmdWhoAmI());
+                query.send(new CmdVersion());
             }
             try {
                 Thread.sleep(sleep);
