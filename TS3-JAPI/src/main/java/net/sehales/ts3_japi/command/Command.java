@@ -56,6 +56,9 @@ public abstract class Command extends Sendable {
         return response;
     }
 
+    /**
+     * @return null or a wrapper for the first response map of a response array
+     */
     public abstract Wrapper getResponseWrapper();
 
     public boolean hasResponse() {
