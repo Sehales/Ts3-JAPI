@@ -13,7 +13,7 @@ public abstract class Command extends Sendable {
     protected List<Parameter> params = new ArrayList<>();
     protected String          command;
     protected Response        response;
-    protected QueryError      error;
+    protected String          error;
 
     public Command(String command) {
         this.command = command;
@@ -36,7 +36,7 @@ public abstract class Command extends Sendable {
 
     @Override
     public void feedError(String line) {
-        error = new QueryError(new ArrayResponse(line).getResponseData().get(0));
+        error = line;
     }
 
     @Override
@@ -46,7 +46,11 @@ public abstract class Command extends Sendable {
         }
     }
 
-    public QueryError getErrorResponse() {
+    public QueryError getError() {
+        return new QueryError(new ArrayResponse(error).getResponseData().get(0));
+    }
+
+    public String getErrorResponse() {
         return error;
     }
 
