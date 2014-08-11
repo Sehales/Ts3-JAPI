@@ -27,7 +27,7 @@ public class CmdServerGroupDelPerm extends Command {
     }
 
     public CmdServerGroupDelPerm addPerm(String permsId) {
-        array.add(new KeyValueParameter("permid", permsId));
+        array.add(new KeyValueParameter("permsid", permsId));
         return this;
     }
 
