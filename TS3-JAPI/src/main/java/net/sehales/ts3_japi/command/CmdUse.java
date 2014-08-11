@@ -16,7 +16,7 @@ public class CmdUse extends Command {
     }
 
     public CmdUse virtual() {
-        add(new OptionParameter("-virtual"));
+        add(new OptionParameter("virtual"));
         return this;
     }
 
