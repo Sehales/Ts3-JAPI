@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.command.parameter;
 
-import net.sehales.ts3_japi.StringUtils;
+import net.sehales.ts3_japi.QueryUtils;
 
 public class KeyValueParameter extends Parameter {
 
@@ -17,7 +17,7 @@ public class KeyValueParameter extends Parameter {
 
     @Override
     public String buildString() {
-        return StringUtils.encode(key) + "=" + StringUtils.encode(value);
+        return QueryUtils.encode(key) + "=" + QueryUtils.encode(value);
     }
 
 }

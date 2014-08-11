@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayParameter extends Parameter {
-    List<Parameter> params = new ArrayList<>();
+    private List<Parameter> params = new ArrayList<>();
 
     public ArrayParameter(Parameter... parameters) {
         for (Parameter param : parameters) {

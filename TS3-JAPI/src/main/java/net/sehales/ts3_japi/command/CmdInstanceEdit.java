@@ -10,11 +10,33 @@ public class CmdInstanceEdit extends Command {
     }
 
     /**
+     * @see #addParameter(ServerInstanceProperty, int)
+     */
+    public CmdInstanceEdit(ServerInstanceProperty property, int value) {
+        this();
+        addParameter(property, value);
+    }
+
+    /**
      * @see #addParameter(ServerInstanceProperty, String)
      */
     public CmdInstanceEdit(ServerInstanceProperty property, String value) {
         this();
         addParameter(property, value);
+    }
+
+    /**
+     * All unchangeable properties passed into it will be ignored
+     * 
+     * @param property
+     * @param value
+     * @return
+     */
+    public CmdInstanceEdit addParameter(ServerInstanceProperty property, int value) {
+        if (property.isChangeable()) {
+            return addParameter(property.getName(), value);
+        }
+        return this;
     }
 
     /**
@@ -31,9 +53,13 @@ public class CmdInstanceEdit extends Command {
         return this;
     }
 
-    public CmdInstanceEdit addParameter(String key, String value) {
+    public CmdInstanceEdit addParameter(String key, int value) {
         add(new KeyValueParameter(key, value));
         return this;
     }
 
+    public CmdInstanceEdit addParameter(String key, String value) {
+        add(new KeyValueParameter(key, value));
+        return this;
+    }
 }

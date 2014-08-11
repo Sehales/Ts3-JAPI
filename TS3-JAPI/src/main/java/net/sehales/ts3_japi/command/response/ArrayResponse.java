@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.sehales.ts3_japi.StringUtils;
+import net.sehales.ts3_japi.QueryUtils;
 
 public class ArrayResponse extends Response {
     private static Pattern            argumentFilter = Pattern.compile("\\s?(\\w+)[=]{1}([^\\s]+)\\s?");
@@ -32,7 +32,7 @@ public class ArrayResponse extends Response {
         Matcher matcher = argumentFilter.matcher(line);
 
         while (matcher.find()) {
-            map.put(StringUtils.decode(matcher.group(1)), StringUtils.decode(matcher.group(2)));
+            map.put(QueryUtils.decode(matcher.group(1)), QueryUtils.decode(matcher.group(2)));
         }
 
         data.add(map);
