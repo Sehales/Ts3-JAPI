@@ -27,8 +27,8 @@ public class CmdServerGroupAddPerm extends Command {
         array.add(new ListParameter(
                         new KeyValueParameter("permid", permId),
                         new KeyValueParameter("permvalue", permValue),
-                        new KeyValueParameter("permNegated", QueryUtils.toInt(permNegated)),
-                        new KeyValueParameter("permSkip", QueryUtils.toInt(permSkip))
+                        new KeyValueParameter("permnegated", QueryUtils.toInt(permNegated)),
+                        new KeyValueParameter("permskip", QueryUtils.toInt(permSkip))
                         ));
         return this;
     }
@@ -37,8 +37,8 @@ public class CmdServerGroupAddPerm extends Command {
         array.add(new ListParameter(
                         new KeyValueParameter("permsid", permsId),
                         new KeyValueParameter("permvalue", permValue),
-                        new KeyValueParameter("permNegated", QueryUtils.toInt(permNegated)),
-                        new KeyValueParameter("permSkip", QueryUtils.toInt(permSkip))
+                        new KeyValueParameter("permnegated", QueryUtils.toInt(permNegated)),
+                        new KeyValueParameter("permskip", QueryUtils.toInt(permSkip))
                         ));
         return this;
     }
