@@ -8,17 +8,18 @@ import net.sehales.ts3_japi.command.parameter.ListParameter;
 public class CmdServerGroupAddPerm extends Command {
     private ArrayParameter array = new ArrayParameter();
 
-    public CmdServerGroupAddPerm() {
+    public CmdServerGroupAddPerm(int serverGroupid) {
         super("servergroupaddperm");
+        add(new KeyValueParameter("sgid", serverGroupid));
     }
 
-    public CmdServerGroupAddPerm(int permId, int permValue, boolean permNegated, boolean permSkip) {
-        this();
+    public CmdServerGroupAddPerm(int serverGroupid, int permId, int permValue, boolean permNegated, boolean permSkip) {
+        this(serverGroupid);
         addPerm(permId, permValue, permNegated, permSkip);
     }
 
-    public CmdServerGroupAddPerm(String permsId, int permValue, boolean permNegated, boolean permSkip) {
-        this();
+    public CmdServerGroupAddPerm(int serverGroupid, String permsId, int permValue, boolean permNegated, boolean permSkip) {
+        this(serverGroupid);
         addPerm(permsId, permValue, permNegated, permSkip);
     }
 
