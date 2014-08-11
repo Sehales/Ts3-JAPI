@@ -2,10 +2,10 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdServerGroupAddClient extends Command {
+public class CmdServerGroupDelClient extends Command {
 
-    public CmdServerGroupAddClient(int serverGroupId, int clientDbId) {
-        super("servergroupaddclient");
+    public CmdServerGroupDelClient(int serverGroupId, int clientDbId) {
+        super("servergroupdelclient");
         add(new KeyValueParameter("sgid", serverGroupId));
         add(new KeyValueParameter("cldbid", clientDbId));
     }
