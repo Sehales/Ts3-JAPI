@@ -1,8 +1,7 @@
 package net.sehales.ts3_japi;
 
 // found @ http://pastebin.com/hJJVjTit
-public class StringUtils {
-
+public class QueryUtils {
     public static String decode(String str) {
         str = str.replace("\\\\", "\\[$mksave]"); // $mksave is just a placeholder
         str = str.replace("\\s", " ");
@@ -42,6 +41,10 @@ public class StringUtils {
         str = str.replace(cVTab.toString(), "\\v");
 
         return str;
+    }
+
+    public static int toInt(boolean b) {
+        return b ? 1 : 0;
     }
 
 }
