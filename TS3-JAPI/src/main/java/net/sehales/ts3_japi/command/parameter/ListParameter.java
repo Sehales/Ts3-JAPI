@@ -22,7 +22,7 @@ public class ListParameter extends Parameter {
         for (Parameter param : params) {
             sb.append(" ").append(param.buildString());
         }
-        return sb.substring(1);
+        return sb.length() > 1 ? sb.substring(1) : "";
     }
 
 }
