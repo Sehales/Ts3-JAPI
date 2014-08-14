@@ -1,12 +1,12 @@
 package net.sehales.ts3_japi.property;
 
-public enum ServerGroupDbType {
-    Template(0),
-    Regular(1),
-    Query(2);
+public enum GroupDbType {
+    TEMPLATE(0),
+    REGULAR(1),
+    QUERY(2);
     private int index;
 
-    private ServerGroupDbType(int index) {
+    private GroupDbType(int index) {
         this.index = index;
     }
 
