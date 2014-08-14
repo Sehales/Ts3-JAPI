@@ -1,7 +1,7 @@
 package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
-import net.sehales.ts3_japi.property.ServerGroupDbType;
+import net.sehales.ts3_japi.property.GroupDbType;
 
 public class CmdServerGroupCopy extends Command {
 
@@ -10,7 +10,7 @@ public class CmdServerGroupCopy extends Command {
         add(new KeyValueParameter("ssgid", sourceGroupId));
         add(new KeyValueParameter("name", name));
         add(new KeyValueParameter("tsgid", 0));
-        add(new KeyValueParameter("type", ServerGroupDbType.Regular.getIndex()));
+        add(new KeyValueParameter("type", GroupDbType.REGULAR.getIndex()));
     }
 
     public CmdServerGroupCopy(String name, int sourceGroupId, int targetGroupId) {
@@ -18,10 +18,10 @@ public class CmdServerGroupCopy extends Command {
         add(new KeyValueParameter("ssgid", sourceGroupId));
         add(new KeyValueParameter("name", name));
         add(new KeyValueParameter("tsgid", targetGroupId));
-        add(new KeyValueParameter("type", ServerGroupDbType.Regular.getIndex()));
+        add(new KeyValueParameter("type", GroupDbType.REGULAR.getIndex()));
     }
 
-    public CmdServerGroupCopy(String name, int sourceGroupId, ServerGroupDbType type) {
+    public CmdServerGroupCopy(String name, int sourceGroupId, GroupDbType type) {
         super("servergroupcopy");
         add(new KeyValueParameter("ssgid", sourceGroupId));
         add(new KeyValueParameter("name", name));
