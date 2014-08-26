@@ -14,5 +14,4 @@ public class CmdChannelPermList extends Command {
         add(new OptionParameter("permsid"));
         return this;
     }
-
 }
