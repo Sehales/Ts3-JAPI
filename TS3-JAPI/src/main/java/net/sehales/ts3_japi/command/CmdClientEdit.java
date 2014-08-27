@@ -1,20 +1,21 @@
 package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
-import net.sehales.ts3_japi.property.ChannelProperty;
+import net.sehales.ts3_japi.property.ClientProperty;
 import net.sehales.ts3_japi.property.ServerInstanceProperty;
 
-public class CmdChannelEdit extends Command {
-    public CmdChannelEdit(int channelId) {
-        super("channeledit");
-        add(new KeyValueParameter("cid", channelId));
+public class CmdClientEdit extends Command {
+
+    public CmdClientEdit(int clientId) {
+        super("clientedit");
+        add(new KeyValueParameter("clid", clientId));
     }
 
     /**
      * @see #addParameter(ServerInstanceProperty, String)
      */
-    public CmdChannelEdit(int channelId, ChannelProperty property, String value) {
-        this(channelId);
+    public CmdClientEdit(int clientId, ClientProperty property, String value) {
+        this(clientId);
         addParameter(property, value);
     }
 
@@ -25,15 +26,16 @@ public class CmdChannelEdit extends Command {
      * @param value
      * @return
      */
-    public CmdChannelEdit addParameter(ChannelProperty property, String value) {
+    public CmdClientEdit addParameter(ClientProperty property, String value) {
         if (property.isChangeable()) {
             return addParameter(property.getName(), value);
         }
         return this;
     }
 
-    public CmdChannelEdit addParameter(String key, String value) {
+    public CmdClientEdit addParameter(String key, String value) {
         add(new KeyValueParameter(key, value));
         return this;
     }
+
 }
