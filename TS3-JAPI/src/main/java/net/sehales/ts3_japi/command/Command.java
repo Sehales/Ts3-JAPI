@@ -37,7 +37,7 @@ public abstract class Command extends Sendable {
 
     @Override
     public void feedResponse(String line) {
-        response = new ArrayResponse(line);
+        response = new Response(line);
     }
 
     public QueryError getError() {
