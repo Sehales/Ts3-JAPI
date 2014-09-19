@@ -18,7 +18,7 @@ public class CmdLogView extends Command {
     }
 
     public CmdLogView beginPos(long beginPos) {
-        add(new KeyValueParameter("begin_pos", beginPos + ""));
+        add(new KeyValueParameter("begin_pos", beginPos));
         return this;
     }
 

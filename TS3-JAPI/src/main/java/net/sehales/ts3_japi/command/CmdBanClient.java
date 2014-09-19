@@ -11,7 +11,7 @@ public class CmdBanClient extends Command {
 
     public CmdBanClient(int clientId, long timeInSeconds) {
         this(clientId);
-        add(new KeyValueParameter("time", "" + timeInSeconds));
+        add(new KeyValueParameter("time", timeInSeconds));
     }
 
     public CmdBanClient(int clientId, long timeInSeconds, String banReason) {

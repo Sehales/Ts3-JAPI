@@ -15,7 +15,7 @@ public class CmdClientDbList extends Command {
     }
 
     public CmdClientDbList duration(long limit) {
-        add(new KeyValueParameter("duration", "" + limit));
+        add(new KeyValueParameter("duration", limit));
         return this;
     }
 
@@ -36,7 +36,7 @@ public class CmdClientDbList extends Command {
      * @return
      */
     public CmdClientDbList start(long offset) {
-        add(new KeyValueParameter("start", "" + offset));
+        add(new KeyValueParameter("start", offset));
         return this;
     }
 

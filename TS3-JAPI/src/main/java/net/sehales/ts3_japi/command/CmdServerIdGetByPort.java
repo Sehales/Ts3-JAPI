@@ -6,7 +6,7 @@ public class CmdServerIdGetByPort extends Command {
 
     public CmdServerIdGetByPort(int port) {
         super("serveridgetbyport");
-        add(new RawParameter(port + ""));
+        add(new RawParameter(port));
     }
 
 }

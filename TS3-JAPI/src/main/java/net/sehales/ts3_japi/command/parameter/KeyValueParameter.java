@@ -10,6 +10,10 @@ public class KeyValueParameter extends Parameter {
         this(key, value + "");
     }
 
+    public KeyValueParameter(String key, long value) {
+        this(key, value + "");
+    }
+
     public KeyValueParameter(String key, String value) {
         this.key = key;
         this.value = value;

@@ -12,7 +12,7 @@ public class CmdUse extends Command {
 
     public CmdUse(int id) {
         this();
-        add(new RawParameter(id + ""));
+        add(new RawParameter(id));
     }
 
     public CmdUse virtual() {
