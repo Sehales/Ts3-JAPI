@@ -3,8 +3,6 @@ package net.sehales.ts3_japi;
 import java.io.PrintStream;
 import java.util.Objects;
 
-import net.sehales.ts3_japi.command.Sendable;
-
 public class QueryWriter extends Thread {
     private ServerQuery      query;
     private int              floodRate = 50;

@@ -1,5 +1,6 @@
 package net.sehales.ts3_japi.command;
 
+import net.sehales.ts3_japi.Sendable;
 import net.sehales.ts3_japi.command.parameter.ListParameter;
 import net.sehales.ts3_japi.command.parameter.Parameter;
 import net.sehales.ts3_japi.command.response.ArrayResponse;

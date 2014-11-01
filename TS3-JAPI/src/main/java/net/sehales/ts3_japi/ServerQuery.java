@@ -11,8 +11,6 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 
-import net.sehales.ts3_japi.command.Sendable;
-
 public class ServerQuery implements AutoCloseable {
 
     private ServerQueryConfig               config;

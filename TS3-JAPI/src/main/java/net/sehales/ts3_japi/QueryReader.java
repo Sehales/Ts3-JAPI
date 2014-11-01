@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
 
-import net.sehales.ts3_japi.command.Sendable;
-
 public class QueryReader extends Thread {
     private ServerQuery      query;
     private BufferedReader   in;

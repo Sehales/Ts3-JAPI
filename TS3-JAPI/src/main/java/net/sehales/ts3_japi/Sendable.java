@@ -1,4 +1,4 @@
-package net.sehales.ts3_japi.command;
+package net.sehales.ts3_japi;
 
 public abstract class Sendable {
 
