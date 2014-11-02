@@ -13,17 +13,17 @@ public class CmdClientAddPerm extends Command {
         add(new KeyValueParameter("cldbid", clientDbId));
     }
 
-    public CmdClientAddPerm(int clientDbId, int permId, int permValue, boolean permSkip) {
+    public CmdClientAddPerm(int clientDbId, int permId, long permValue, boolean permSkip) {
         this(clientDbId);
         addPerm(permId, permValue, permSkip);
     }
 
-    public CmdClientAddPerm(int clientDbId, String permsId, int permValue, boolean permSkip) {
+    public CmdClientAddPerm(int clientDbId, String permsId, long permValue, boolean permSkip) {
         this(clientDbId);
         addPerm(permsId, permValue, permSkip);
     }
 
-    public CmdClientAddPerm addPerm(int permId, int permValue, boolean permSkip) {
+    public CmdClientAddPerm addPerm(int permId, long permValue, boolean permSkip) {
         array.add(new ListParameter(
                         new KeyValueParameter("permid", permId),
                         new KeyValueParameter("permvalue", permValue),
@@ -32,7 +32,7 @@ public class CmdClientAddPerm extends Command {
         return this;
     }
 
-    public CmdClientAddPerm addPerm(String permsId, int permValue, boolean permSkip) {
+    public CmdClientAddPerm addPerm(String permsId, long permValue, boolean permSkip) {
         array.add(new ListParameter(
                         new KeyValueParameter("permsid", permsId),
                         new KeyValueParameter("permvalue", permValue),

@@ -13,17 +13,17 @@ public class CmdServerGroupAddPerm extends Command {
         add(new KeyValueParameter("sgid", serverGroupid));
     }
 
-    public CmdServerGroupAddPerm(int serverGroupid, int permId, int permValue, boolean permNegated, boolean permSkip) {
+    public CmdServerGroupAddPerm(int serverGroupid, int permId, long permValue, boolean permNegated, boolean permSkip) {
         this(serverGroupid);
         addPerm(permId, permValue, permNegated, permSkip);
     }
 
-    public CmdServerGroupAddPerm(int serverGroupid, String permsId, int permValue, boolean permNegated, boolean permSkip) {
+    public CmdServerGroupAddPerm(int serverGroupid, String permsId, long permValue, boolean permNegated, boolean permSkip) {
         this(serverGroupid);
         addPerm(permsId, permValue, permNegated, permSkip);
     }
 
-    public CmdServerGroupAddPerm addPerm(int permId, int permValue, boolean permNegated, boolean permSkip) {
+    public CmdServerGroupAddPerm addPerm(int permId, long permValue, boolean permNegated, boolean permSkip) {
         array.add(new ListParameter(
                         new KeyValueParameter("permid", permId),
                         new KeyValueParameter("permvalue", permValue),
@@ -33,7 +33,7 @@ public class CmdServerGroupAddPerm extends Command {
         return this;
     }
 
-    public CmdServerGroupAddPerm addPerm(String permsId, int permValue, boolean permNegated, boolean permSkip) {
+    public CmdServerGroupAddPerm addPerm(String permsId, long permValue, boolean permNegated, boolean permSkip) {
         array.add(new ListParameter(
                         new KeyValueParameter("permsid", permsId),
                         new KeyValueParameter("permvalue", permValue),

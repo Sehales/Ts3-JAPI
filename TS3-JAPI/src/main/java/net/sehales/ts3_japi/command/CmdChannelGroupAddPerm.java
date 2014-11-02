@@ -12,17 +12,17 @@ public class CmdChannelGroupAddPerm extends Command {
         add(new KeyValueParameter("cgid", channelGroupId));
     }
 
-    public CmdChannelGroupAddPerm(int channelGroupId, int permId, int permValue) {
+    public CmdChannelGroupAddPerm(int channelGroupId, int permId, long permValue) {
         this(channelGroupId);
         addPerm(permId, permValue);
     }
 
-    public CmdChannelGroupAddPerm(int channelGroupId, String permsId, int permValue) {
+    public CmdChannelGroupAddPerm(int channelGroupId, String permsId, long permValue) {
         this(channelGroupId);
         addPerm(permsId, permValue);
     }
 
-    public CmdChannelGroupAddPerm addPerm(int permId, int permValue) {
+    public CmdChannelGroupAddPerm addPerm(int permId, long permValue) {
         array.add(new ListParameter(
                         new KeyValueParameter("permid", permId),
                         new KeyValueParameter("permvalue", permValue)
@@ -30,7 +30,7 @@ public class CmdChannelGroupAddPerm extends Command {
         return this;
     }
 
-    public CmdChannelGroupAddPerm addPerm(String permsId, int permValue) {
+    public CmdChannelGroupAddPerm addPerm(String permsId, long permValue) {
         array.add(new ListParameter(
                         new KeyValueParameter("permsid", permsId),
                         new KeyValueParameter("permvalue", permValue)
