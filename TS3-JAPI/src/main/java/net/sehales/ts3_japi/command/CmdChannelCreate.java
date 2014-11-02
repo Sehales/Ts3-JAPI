@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.ChannelProperty;
 
-public class CmdChannelCreate extends Command {
+public class CmdChannelCreate extends ArrayResponseCommand {
     public CmdChannelCreate(String name) {
         super("channelcreate");
         add(new KeyValueParameter("channel_name", name));

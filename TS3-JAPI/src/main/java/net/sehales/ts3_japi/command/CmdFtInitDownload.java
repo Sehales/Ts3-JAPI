@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdFtInitDownload extends Command {
+public class CmdFtInitDownload extends ArrayResponseCommand {
 
     public CmdFtInitDownload(int clientFileTransferId, String filePath, int channelId, String channelPassword, long seekPos) {
         super("ftinitdownload");

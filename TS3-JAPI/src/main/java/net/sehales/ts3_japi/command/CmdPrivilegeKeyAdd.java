@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.TokenType;
 
-public class CmdPrivilegeKeyAdd extends Command {
+public class CmdPrivilegeKeyAdd extends ArrayResponseCommand {
 
     /**
      * if type is {@link TokenType#SERVER_GROUP} channelId will be ignored, otherwise groupId has to be a channelId and channelId has to be a valid

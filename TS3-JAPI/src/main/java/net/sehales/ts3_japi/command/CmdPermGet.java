@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdPermGet extends Command {
+public class CmdPermGet extends ArrayResponseCommand {
 
     private CmdPermGet() {
         super("permget");

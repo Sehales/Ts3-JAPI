@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
 
-public class CmdChannelList extends Command {
+public class CmdChannelList extends ArrayResponseCommand {
 
     public CmdChannelList() {
         super("channellist");

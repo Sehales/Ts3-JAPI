@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
 
-public class CmdClientList extends Command {
+public class CmdClientList extends ArrayResponseCommand {
 
     public CmdClientList() {
         super("clientlist");

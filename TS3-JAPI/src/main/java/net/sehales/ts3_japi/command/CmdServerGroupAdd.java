@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.GroupDbType;
 
-public class CmdServerGroupAdd extends Command {
+public class CmdServerGroupAdd extends ArrayResponseCommand {
 
     public CmdServerGroupAdd(String name) {
         super("servergroupadd");

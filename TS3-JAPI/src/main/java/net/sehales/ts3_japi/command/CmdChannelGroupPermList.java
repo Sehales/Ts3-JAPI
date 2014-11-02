@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
 
-public class CmdChannelGroupPermList extends Command {
+public class CmdChannelGroupPermList extends ArrayResponseCommand {
 
     public CmdChannelGroupPermList() {
         super("channelgrouppermlist");

@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdChannelGroupClientList extends Command {
+public class CmdChannelGroupClientList extends ArrayResponseCommand {
 
     public CmdChannelGroupClientList() {
         super("channelgroupclientlist");

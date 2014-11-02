@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdBanClient extends Command {
+public class CmdBanClient extends ArrayResponseCommand {
 
     public CmdBanClient(int clientId) {
         super("banclient");

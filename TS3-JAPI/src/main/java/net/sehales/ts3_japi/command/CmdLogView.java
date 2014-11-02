@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdLogView extends Command {
+public class CmdLogView extends ArrayResponseCommand {
 
     public CmdLogView() {
         super("logview");

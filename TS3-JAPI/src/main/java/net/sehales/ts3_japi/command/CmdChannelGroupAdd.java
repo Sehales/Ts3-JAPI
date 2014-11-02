@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.GroupDbType;
 
-public class CmdChannelGroupAdd extends Command {
+public class CmdChannelGroupAdd extends ArrayResponseCommand {
     public CmdChannelGroupAdd(String name) {
         super("channelgroupadd");
         add(new KeyValueParameter("name", name));

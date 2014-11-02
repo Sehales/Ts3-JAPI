@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdFtGetFileInfo extends Command {
+public class CmdFtGetFileInfo extends ArrayResponseCommand {
 
     public CmdFtGetFileInfo(int channelId, String channelPassword, String filePath) {
         super("ftgetfileinfo");

@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdClientInfo extends Command {
+public class CmdClientInfo extends ArrayResponseCommand {
 
     public CmdClientInfo(int clientId) {
         super("clientinfo");

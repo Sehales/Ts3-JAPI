@@ -2,7 +2,7 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdPermFind extends Command {
+public class CmdPermFind extends ArrayResponseCommand {
 
     private CmdPermFind() {
         super("permfind");

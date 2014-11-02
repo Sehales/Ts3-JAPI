@@ -3,7 +3,7 @@ package net.sehales.ts3_japi.command;
 import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 
-public class CmdFtInitUpload extends Command {
+public class CmdFtInitUpload extends ArrayResponseCommand {
 
     public CmdFtInitUpload(int clientFileTransferId, String fileName, int channelId, String channelPassword, long size, boolean overwrite, boolean resume) {
         super("ftinitupload");
