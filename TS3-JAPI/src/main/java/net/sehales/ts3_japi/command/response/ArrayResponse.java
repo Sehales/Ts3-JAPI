@@ -16,11 +16,7 @@ public class ArrayResponse extends Response {
 
     public ArrayResponse(String rawResponse) {
         super(rawResponse);
-        StringTokenizer tsArray = new StringTokenizer(rawResponse, "|");
-
-        while (tsArray.hasMoreTokens()) {
-            parseLine(tsArray.nextToken());
-        }
+        parseRawResponse(rawResponse);
     }
 
     public List<Map<String, String>> getResponseData() {
@@ -36,6 +32,14 @@ public class ArrayResponse extends Response {
         }
 
         data.add(map);
+    }
+
+    private void parseRawResponse(String rawResponse) {
+        StringTokenizer tsArray = new StringTokenizer(rawResponse, "|");
+
+        while (tsArray.hasMoreTokens()) {
+            parseLine(tsArray.nextToken());
+        }
     }
 
     @Override
