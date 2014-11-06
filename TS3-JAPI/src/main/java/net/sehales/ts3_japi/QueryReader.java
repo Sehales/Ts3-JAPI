@@ -23,7 +23,6 @@ public class QueryReader extends Thread {
         try {
             int i = 0;
             while ((i < 4) || in.ready()) {
-                // System.out.println(in.readLine());
                 in.readLine();
                 i++;
             }

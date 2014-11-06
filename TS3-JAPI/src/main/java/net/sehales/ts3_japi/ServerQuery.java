@@ -118,11 +118,11 @@ public class ServerQuery implements AutoCloseable {
         commandTimeout = config.commandTimeout();
     }
 
-    public synchronized boolean send(Sendable cmd) {
+    public boolean send(Sendable cmd) {
         return send(cmd, commandTimeout);
     }
 
-    public synchronized boolean send(Sendable cmd, int timeout) {
+    public boolean send(Sendable cmd, int timeout) {
         if (cmd.isSent()) {
             throw new UnsupportedOperationException("You may not use a Sendable object twice!");
         }
