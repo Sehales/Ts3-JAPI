@@ -3,6 +3,7 @@ package net.sehales.ts3_japi.wrapper;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,17 +30,25 @@ public class GlobalCommandHelp implements HelpWrapper {
         String check;
         do {
             check = lines.poll();
-            System.out.println("line: " + check);
         } while (!check.startsWith("Command Overview:"));
 
         for (String line : lines) {
-            System.out.println("matcher line: " + line);
             Matcher matcher = cmdHelpPattern.matcher(line);
             if (matcher.find()) {
-                System.out.println(matcher.group(1));
-                System.out.println(matcher.group(2));
                 helpMap.put(matcher.group(1), matcher.group(2));
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Entry<String, String> e : helpMap.entrySet()) {
+            sb.append(String.format(", [%s]='%s'", e.getKey(), e.getValue()));
+        }
+
+        return sb.substring(2);
+
     }
 }
