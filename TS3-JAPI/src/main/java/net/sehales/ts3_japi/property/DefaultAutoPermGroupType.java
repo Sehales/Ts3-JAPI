@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum DefaultAutoPermGroupType {
+public enum DefaultAutoPermGroupType implements Property {
     CHANNEL_GUEST(10),
     SERVER_GUEST(15),
     QUERY_GUEST(20),
@@ -19,5 +19,10 @@ public enum DefaultAutoPermGroupType {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

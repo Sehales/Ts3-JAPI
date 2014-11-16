@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum ClientProperty {
+public enum ClientProperty implements Property {
     CLIENT_AWAY(false),
     CLIENT_AWAY_MESSAGE(false),
     CLIENT_CHANNEL_GROUP_ID(false),
@@ -55,11 +55,12 @@ public enum ClientProperty {
         this.changeable = changeable;
     }
 
-    public String getName() {
-        return name().toLowerCase();
-    }
-
     public boolean isChangeable() {
         return changeable;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

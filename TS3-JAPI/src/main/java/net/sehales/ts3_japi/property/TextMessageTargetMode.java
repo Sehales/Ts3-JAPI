@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum TextMessageTargetMode {
+public enum TextMessageTargetMode implements Property {
     CLIENT(1),
     CHANNEL(2),
     SERVER(3);
@@ -13,5 +13,10 @@ public enum TextMessageTargetMode {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

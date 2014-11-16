@@ -32,7 +32,7 @@ public class CmdServerEdit extends Command {
      */
     public CmdServerEdit addParameter(VirtualServerProperty property, String value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }

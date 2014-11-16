@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum GroupDbType {
+public enum GroupDbType implements Property {
     TEMPLATE(0),
     REGULAR(1),
     QUERY(2);
@@ -12,5 +12,10 @@ public enum GroupDbType {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

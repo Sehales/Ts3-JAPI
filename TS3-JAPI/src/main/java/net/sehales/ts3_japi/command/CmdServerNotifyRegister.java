@@ -6,11 +6,11 @@ import net.sehales.ts3_japi.property.ServerEventType;
 public class CmdServerNotifyRegister extends Command {
 
     public CmdServerNotifyRegister(ServerEventType event) {
-        this(event.getName());
+        this(event.toString());
     }
 
     public CmdServerNotifyRegister(ServerEventType event, int channelId) {
-        this(event.getName(), channelId);
+        this(event.toString(), channelId);
     }
 
     public CmdServerNotifyRegister(String event) {

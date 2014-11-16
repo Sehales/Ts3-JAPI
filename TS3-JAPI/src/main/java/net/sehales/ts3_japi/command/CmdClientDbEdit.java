@@ -28,7 +28,7 @@ public class CmdClientDbEdit extends Command {
      */
     public CmdClientDbEdit addParameter(ClientProperty property, String value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }

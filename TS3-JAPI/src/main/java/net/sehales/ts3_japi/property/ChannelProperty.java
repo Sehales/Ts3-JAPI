@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum ChannelProperty {
+public enum ChannelProperty implements Property {
     CHANNEL_CODEC(true),
     CHANNEL_CODEC_IS_UNENCRYPTED(true),
     CHANNEL_CODEC_QUALITY(true),
@@ -33,11 +33,12 @@ public enum ChannelProperty {
         this.changeable = changeable;
     }
 
-    public String getName() {
-        return name().toLowerCase();
-    }
-
     public boolean isChangeable() {
         return changeable;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

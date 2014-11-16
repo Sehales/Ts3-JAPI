@@ -27,7 +27,7 @@ public class CmdChannelEdit extends Command {
      */
     public CmdChannelEdit addParameter(ChannelProperty property, String value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }

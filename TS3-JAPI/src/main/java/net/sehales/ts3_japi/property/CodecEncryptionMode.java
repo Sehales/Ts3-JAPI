@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum CodecEncryptionMode {
+public enum CodecEncryptionMode implements Property {
     INDIVIDUAL(0),
     DISABLED(1),
     ENABLED(2);
@@ -13,5 +13,10 @@ public enum CodecEncryptionMode {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

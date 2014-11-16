@@ -1,9 +1,10 @@
 package net.sehales.ts3_japi.property;
 
-public enum ServerEventType {
+public enum ServerEventType implements Property {
     SERVER, CHANNEL, TEXTSERVER, TEXTCHANNEL, TEXTPRIVATE, TOKENUSED;
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name().toLowerCase();
     }
 }

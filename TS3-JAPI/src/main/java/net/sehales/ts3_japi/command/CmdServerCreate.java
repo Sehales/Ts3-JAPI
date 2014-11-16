@@ -23,7 +23,7 @@ public class CmdServerCreate extends ArrayResponseCommand {
      */
     public CmdServerCreate addParameter(VirtualServerProperty property, String value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }

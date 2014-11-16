@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum ServerInstanceProperty {
+public enum ServerInstanceProperty implements Property {
     CONNECTION_BANDWIDTH_RECEIVED_LAST_MINUTE_TOTAL(false),
     CONNECTION_BANDWIDTH_RECEIVED_LAST_SECOND_TOTAL(false),
     CONNECTION_BANDWIDTH_SENT_LAST_MINUTE_TOTAL(false),
@@ -36,11 +36,12 @@ public enum ServerInstanceProperty {
         this.changeable = changeable;
     }
 
-    public String getName() {
-        return name().toLowerCase();
-    }
-
     public boolean isChangeable() {
         return changeable;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

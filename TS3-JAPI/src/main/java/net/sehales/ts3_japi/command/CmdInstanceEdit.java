@@ -34,7 +34,7 @@ public class CmdInstanceEdit extends Command {
      */
     public CmdInstanceEdit addParameter(ServerInstanceProperty property, int value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }
@@ -48,7 +48,7 @@ public class CmdInstanceEdit extends Command {
      */
     public CmdInstanceEdit addParameter(ServerInstanceProperty property, String value) {
         if (property.isChangeable()) {
-            return addParameter(property.getName(), value);
+            return addParameter(property.toString(), value);
         }
         return this;
     }

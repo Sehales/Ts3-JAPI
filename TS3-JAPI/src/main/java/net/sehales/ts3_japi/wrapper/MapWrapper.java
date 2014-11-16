@@ -3,8 +3,10 @@ package net.sehales.ts3_japi.wrapper;
 import java.util.Map;
 import java.util.Objects;
 
+import net.sehales.ts3_japi.property.Property;
+
 public class MapWrapper implements Wrapper {
-    private Map<String, String> data;
+    protected Map<String, String> data;
 
     @SuppressWarnings("unused")
     private MapWrapper() {}
@@ -13,32 +15,56 @@ public class MapWrapper implements Wrapper {
         this.data = data;
     }
 
+    public boolean getBoolean(Property property) {
+        return getBoolean(property.toString());
+    }
+
     public boolean getBoolean(String key) {
-        return getInt(key) == 0;
+        return getInt(key) != 0;
+    }
+
+    public double getDouble(Property property) {
+        return getDouble(property.toString());
     }
 
     public double getDouble(String key) {
         String str = getString(key);
-        Objects.requireNonNull(str, "String may not be null");
+        Objects.requireNonNull(str, "string may not be null");
         return Double.valueOf(str);
+    }
+
+    public float getFloat(Property property) {
+        return getFloat(property.toString());
     }
 
     public float getFloat(String key) {
         String str = getString(key);
-        Objects.requireNonNull(str, "String may not be null");
+        Objects.requireNonNull(str, "string may not be null");
         return Float.valueOf(str);
+    }
+
+    public int getInt(Property property) {
+        return getInt(property.toString());
     }
 
     public int getInt(String key) {
         String str = getString(key);
-        Objects.requireNonNull(str, "String may not be null");
+        Objects.requireNonNull(str, "string may not be null");
         return Integer.valueOf(str);
+    }
+
+    public long getLong(Property property) {
+        return getLong(property.toString());
     }
 
     public long getLong(String key) {
         String str = getString(key);
-        Objects.requireNonNull(str, "String may not be null");
+        Objects.requireNonNull(str, "string may not be null");
         return Long.valueOf(str);
+    }
+
+    public String getString(Property property) {
+        return getString(property.toString());
     }
 
     public String getString(String key) {

@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum KickType {
+public enum KickType implements Property {
 
     CHANNEL(4),
     SERVER(5);
@@ -13,5 +13,10 @@ public enum KickType {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

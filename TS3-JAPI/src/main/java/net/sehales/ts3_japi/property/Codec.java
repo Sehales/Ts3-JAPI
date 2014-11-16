@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum Codec {
+public enum Codec implements Property {
     SPEEX_NARROWBAND(0),
     SPEEX_WIDEBAND(1),
     SPEEX_ULTRAWIDEBAND(2),
@@ -14,5 +14,10 @@ public enum Codec {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }

@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.property;
 
-public enum TokenType {
+public enum TokenType implements Property {
     SERVER_GROUP(0), CHANNEL_GROUP(1);
     private int index;
 
@@ -10,5 +10,10 @@ public enum TokenType {
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
     }
 }
