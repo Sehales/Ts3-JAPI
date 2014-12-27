@@ -41,6 +41,9 @@ public class QueryWriter extends Thread {
                     out.println(cmd.buildString());
                     cmd.setSent();
                     query.lastCommand = System.currentTimeMillis();
+                    if (query.isDebugMode()) {
+                        System.out.printf("Command: %s\n", cmd.buildString());
+                    }
                 }
             }
             try {

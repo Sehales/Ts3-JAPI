@@ -18,8 +18,7 @@ public class QueryReader extends Thread {
         this.query = query;
 
         in = query.br;
-        // first get rid of the welcome message, which the ts3 server sends
-        // at the beginning of every connection
+        // first get rid of the welcome message, which the ts3 server sends at the beginning of every connection
         try {
             int i = 0;
             while ((i < 4) || in.ready()) {
@@ -49,7 +48,9 @@ public class QueryReader extends Thread {
                         if (!line.isEmpty()) {
                             if (line.startsWith("notify")) {
                                 // TODO implement an event system
-                                System.out.println("notfiy: " + line);
+                                if (query.isDebugMode()) {
+                                    System.out.printf("Event: %s\n", line);
+                                }
                             } else {
                                 Sendable cmd = query.getCommandQueue().peek();
                                 if (Objects.nonNull(cmd) && cmd.isSent()) {
@@ -60,7 +61,13 @@ public class QueryReader extends Thread {
                                     } else {
                                         cmd.feedResponse(line);
                                     }
+                                    if (query.isDebugMode()) {
+                                        System.out.printf("Response: %s\n", line);
+                                    }
+                                } else if (query.isDebugMode()) {
+                                    System.out.printf("Received unexpected response: %s\n");
                                 }
+
                             }
                         }
                     } catch (IOException e) {

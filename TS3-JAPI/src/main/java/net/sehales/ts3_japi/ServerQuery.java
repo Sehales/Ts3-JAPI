@@ -29,6 +29,8 @@ public class ServerQuery implements AutoCloseable {
     private HeartbeatThread                 heartbeat;
     long                                    lastCommand    = System.currentTimeMillis();
 
+    private boolean                         debugMode;
+
     @SuppressWarnings("unused")
     private ServerQuery() {}
 
@@ -93,6 +95,10 @@ public class ServerQuery implements AutoCloseable {
         return lastCommand;
     }
 
+    public boolean isDebugMode() {
+        return debugMode;
+    }
+
     private void openConnection() throws UnknownHostException, IOException {
         socket = new Socket(config.host(), config.port(), config.localAddress(), config.localPort());
 
@@ -148,6 +154,10 @@ public class ServerQuery implements AutoCloseable {
             send(cmd);
             consumer.accept(cmd);
         }, "TS3-JAPI_Asynchronous-command-executor")
-        .start();
+                        .start();
+    }
+
+    public void setDebugMode(boolean turnedOn) {
+        debugMode = turnedOn;
     }
 }

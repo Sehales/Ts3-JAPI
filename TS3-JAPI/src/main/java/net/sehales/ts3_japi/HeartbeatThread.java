@@ -23,6 +23,9 @@ public class HeartbeatThread extends Thread {
     public void run() {
         while (!stop) {
             if ((System.currentTimeMillis() - query.lastCommand) > rate) {
+                if (query.isDebugMode()) {
+                    System.out.println("Sending heartbeat");
+                }
                 query.send(new CmdVersion());
             }
             try {
