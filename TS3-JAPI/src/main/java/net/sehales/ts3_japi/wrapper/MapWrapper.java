@@ -75,11 +75,12 @@ public class MapWrapper implements Wrapper {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
+        sb.append('{');
         for (Map.Entry<String, String> e : data.entrySet()) {
             sb.append(String.format("[%s] = \"%s\", ", e.getKey(), e.getValue()));
         }
-
-        return sb.substring(0, sb.length() - 2);
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append('}');
+        return sb.toString();
     }
 }
