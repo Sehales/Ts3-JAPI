@@ -10,6 +10,10 @@ public class QueryError extends MapWrapper {
         super(data);
     }
 
+    public String getExtraMessage() {
+        return getString(ErrorProperty.EXTRA_MSG);
+    }
+
     public int getId() {
         return getInt(ErrorProperty.ID);
     }

@@ -11,6 +11,8 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 
+import net.sehales.ts3_japi.exception.QueryException;
+
 public class ServerQuery implements AutoCloseable {
 
     private ServerQueryConfig               config;
@@ -34,7 +36,7 @@ public class ServerQuery implements AutoCloseable {
     @SuppressWarnings("unused")
     private ServerQuery() {}
 
-    public ServerQuery(ServerQueryConfig config) throws UnknownHostException, IOException {
+    public ServerQuery(ServerQueryConfig config) throws UnknownHostException, IOException, QueryException {
         this.config = config;
         openConnection();
     }
@@ -99,7 +101,7 @@ public class ServerQuery implements AutoCloseable {
         return debugMode;
     }
 
-    private void openConnection() throws UnknownHostException, IOException {
+    private void openConnection() throws UnknownHostException, IOException, QueryException {
         socket = new Socket(config.host(), config.port(), config.localAddress(), config.localPort());
 
         br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));

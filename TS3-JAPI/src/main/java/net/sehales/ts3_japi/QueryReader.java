@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
 
+import net.sehales.ts3_japi.command.response.ArrayResponse;
+import net.sehales.ts3_japi.exception.QueryException;
+import net.sehales.ts3_japi.wrapper.QueryError;
+
 public class QueryReader extends Thread {
     private ServerQuery      query;
     private BufferedReader   in;
@@ -13,21 +17,29 @@ public class QueryReader extends Thread {
     @SuppressWarnings("unused")
     private QueryReader() {}
 
-    QueryReader(ServerQuery query) {
+    QueryReader(ServerQuery query) throws QueryException, IOException {
         super("TS3-JAPI_Query-reader");
         this.query = query;
 
         in = query.br;
-        // first get rid of the welcome message, which the ts3 server sends at the beginning of every connection
-        try {
-            int i = 0;
-            while ((i < 4) || in.ready()) {
-                in.readLine();
-                i++;
-            }
-        } catch (final IOException e) {
-            e.printStackTrace();
+        // first get rid of the welcome message, which the ts3 server sends at the beginning of every connection and check for an error
+        int i = 0;
+        String line = "";
+        while ((i < 4) || in.ready()) {
+            line = in.readLine();
+            i++;
         }
+
+        if (!(line).isEmpty() && line.startsWith("error")) {
+            QueryError error = new QueryError(
+                            new ArrayResponse(
+                                            line.substring(line.indexOf(" "),
+                                                            line.length())).getMap()
+                            );
+
+            throw new QueryException(error);
+        }
+
     }
 
     public void end() {
@@ -65,7 +77,7 @@ public class QueryReader extends Thread {
                                         System.out.printf("Response: %s\n", line);
                                     }
                                 } else if (query.isDebugMode()) {
-                                    System.out.printf("Received unexpected response: %s\n");
+                                    System.out.printf("Received unexpected response: %s\n", line);
                                 }
 
                             }
