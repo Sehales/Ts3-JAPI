@@ -1,7 +1,11 @@
 package net.sehales.ts3_japi.command;
 
+import java.util.List;
+
 import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
+import net.sehales.ts3_japi.property.LogProperty;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdLogView extends ArrayResponseCommand {
 
@@ -22,6 +26,15 @@ public class CmdLogView extends ArrayResponseCommand {
         return this;
     }
 
+    /**
+     * @returns a <code>List<{link MapWrapper}></code> with each {@link MapWrapper} containing one line available via the key {@link LogProperty#L}
+     *          and entries with the other keys defined in {@link LogProperty}
+     */
+    @Override
+    public List<MapWrapper> getResponseWrapper() {
+        return response.getWrapperList();
+    }
+
     public CmdLogView instance(boolean useInstance) {
         add(new KeyValueParameter("instance", QueryUtils.toInt(useInstance)));
         return this;
@@ -36,5 +49,4 @@ public class CmdLogView extends ArrayResponseCommand {
         add(new KeyValueParameter("reverse", QueryUtils.toInt(isReverse)));
         return this;
     }
-
 }

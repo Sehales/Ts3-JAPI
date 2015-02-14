@@ -10,10 +10,11 @@ public class CmdVersion extends ArrayResponseCommand {
     }
 
     /**
-     * Take a look at {@link VersionInfoProperty} for possible properties you can get from that {@link MapWrapper}
+     * Take a look at {@link VersionInfoProperty} for possible properties you can get from this {@link MapWrapper}
      */
+    @Override
     public MapWrapper getResponseWrapper() {
-        return new MapWrapper(response.getResponseData().get(0));
+        return response.getWrapper();
     }
 
 }

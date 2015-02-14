@@ -9,6 +9,9 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import net.sehales.ts3_japi.exception.QueryException;
@@ -31,6 +34,8 @@ public class ServerQuery implements AutoCloseable {
     private HeartbeatThread                 heartbeat;
     long                                    lastCommand    = System.currentTimeMillis();
 
+    private ExecutorService                 executor;
+
     private boolean                         debugMode;
 
     @SuppressWarnings("unused")
@@ -38,6 +43,7 @@ public class ServerQuery implements AutoCloseable {
 
     public ServerQuery(ServerQueryConfig config) throws UnknownHostException, IOException, QueryException {
         this.config = config;
+        executor = Executors.newFixedThreadPool(config.threadPoolSize());
         openConnection();
     }
 
@@ -52,6 +58,11 @@ public class ServerQuery implements AutoCloseable {
     @Override
     public void close() {
         ensureOpen();
+        try {
+            executor.awaitTermination(commandTimeout, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         heartbeat.end();
         try {
             heartbeat.join();
@@ -152,11 +163,10 @@ public class ServerQuery implements AutoCloseable {
 
     public void sendAsync(Sendable cmd, Consumer<Sendable> consumer) {
         ensureOpen();
-        new Thread(() -> {
+        executor.execute(() -> {
             send(cmd);
             consumer.accept(cmd);
-        }, "TS3-JAPI_Asynchronous-command-executor")
-                        .start();
+        });
     }
 
     public void setDebugMode(boolean turnedOn) {

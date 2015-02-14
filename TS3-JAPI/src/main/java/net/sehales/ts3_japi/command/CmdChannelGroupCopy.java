@@ -1,6 +1,7 @@
 package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
+import net.sehales.ts3_japi.property.ChannelGroupProperty;
 import net.sehales.ts3_japi.property.GroupDbType;
 
 public class CmdChannelGroupCopy extends ArrayResponseCommand {
@@ -27,6 +28,14 @@ public class CmdChannelGroupCopy extends ArrayResponseCommand {
         add(new KeyValueParameter("name", name));
         add(new KeyValueParameter("tcgid", targetGroupId));
         add(new KeyValueParameter("type", GroupDbType.REGULAR.getIndex()));
+    }
+
+    /**
+     * @return the channel group id of the newly created channel group or the target channel group
+     */
+    @Override
+    public Integer getResponseWrapper() {
+        return response.getWrapper().getInt(ChannelGroupProperty.CGID);
     }
 
 }

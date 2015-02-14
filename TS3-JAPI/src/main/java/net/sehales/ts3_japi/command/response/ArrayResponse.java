@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sehales.ts3_japi.QueryUtils;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class ArrayResponse extends Response {
     private static Pattern            argumentFilter = Pattern.compile("\\s?(\\w+)[=]{1}([^\\s]+)\\s?");
@@ -19,8 +20,34 @@ public class ArrayResponse extends Response {
         parseRawResponse(rawResponse);
     }
 
-    public List<Map<String, String>> getResponseData() {
+    public int dataSize() {
+        return data.size();
+    }
+
+    public List<Map<String, String>> getData() {
         return data;
+    }
+
+    public Map<String, String> getMap() {
+        return getMap(0);
+    }
+
+    public Map<String, String> getMap(int index) {
+        return data.get(index);
+    }
+
+    public MapWrapper getWrapper() {
+        return getWrapper(0);
+    }
+
+    public MapWrapper getWrapper(int index) {
+        return new MapWrapper(data.get(index));
+    }
+
+    public List<MapWrapper> getWrapperList() {
+        List<MapWrapper> list = new ArrayList<>();
+        data.stream().forEach(map -> list.add(new MapWrapper(map)));
+        return list;
     }
 
     private void parseLine(String line) {

@@ -14,6 +14,7 @@ public class ServerQueryConfig {
     private long        readerSleeptime    = 5;
     private long        heartbeatRate      = 300_000;
     private long        heartbeatSleeptime = 1_000;
+    private int         threadPoolSize     = 10;
 
     public int commandTimeout() {
         return commandTimeout;
@@ -85,6 +86,14 @@ public class ServerQueryConfig {
     public ServerQueryConfig readerSleeptime(long readerSleeptime) {
         this.readerSleeptime = readerSleeptime;
         return this;
+    }
+
+    public int threadPoolSize() {
+        return threadPoolSize;
+    }
+
+    public void threadPoolSize(int threadPoolSize) {
+        this.threadPoolSize = threadPoolSize;
     }
 
     public int writerFloodrate() {

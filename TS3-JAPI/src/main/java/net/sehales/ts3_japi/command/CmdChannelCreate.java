@@ -28,4 +28,12 @@ public class CmdChannelCreate extends ArrayResponseCommand {
         return this;
     }
 
+    /**
+     * @return the channel id of the created channel
+     */
+    @Override
+    public Integer getResponseWrapper() {
+        return response.getWrapper().getInt(ChannelProperty.CID);
+    }
+
 }

@@ -1,6 +1,10 @@
 package net.sehales.ts3_japi.command;
 
+import java.util.List;
+
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
+import net.sehales.ts3_japi.property.ClientProperty;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdClientList extends ArrayResponseCommand {
 
@@ -16,6 +20,14 @@ public class CmdClientList extends ArrayResponseCommand {
     public CmdClientList country() {
         add(new OptionParameter("country"));
         return this;
+    }
+
+    /**
+     * Take a look at {@link ClientProperty} for possible properties you can get from this <code>List<{@link MapWrapper}></code>
+     */
+    @Override
+    public List<MapWrapper> getResponseWrapper() {
+        return response.getWrapperList();
     }
 
     public CmdClientList groups() {

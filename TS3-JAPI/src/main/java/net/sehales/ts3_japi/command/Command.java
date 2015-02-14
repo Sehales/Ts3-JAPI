@@ -12,6 +12,7 @@ public abstract class Command extends Sendable {
     protected String        command;
     protected Response      response;
     protected QueryError    error;
+    protected String        fullCommand;
 
     public Command(String command) {
         this.command = command;
@@ -22,18 +23,26 @@ public abstract class Command extends Sendable {
         return this;
     }
 
+    /**
+     * builds the actual command string (concatenates the command with its parameters)
+     * 
+     * </br>once called the string will be saved and only the saved string will be returned
+     */
     @Override
     public String buildString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(command);
-        sb.append(" ");
-        sb.append(params.buildString());
-        return sb.toString();
+        if (fullCommand == null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(command);
+            sb.append(" ");
+            sb.append(params.buildString());
+            fullCommand = sb.toString();
+        }
+        return fullCommand;
     }
 
     @Override
     public void feedError(String line) {
-        error = new QueryError(new ArrayResponse(line).getResponseData().get(0));
+        error = new QueryError(new ArrayResponse(line).getMap());
     }
 
     @Override

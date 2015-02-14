@@ -19,4 +19,6 @@ public abstract class ArrayResponseCommand extends Command {
         return response;
     }
 
+    public abstract Object getResponseWrapper();
+
 }

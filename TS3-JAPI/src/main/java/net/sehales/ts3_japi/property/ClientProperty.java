@@ -18,6 +18,7 @@ public enum ClientProperty implements Property {
     CLIENT_IS_TALKER(true),
     CLIENT_LASTCONNECTED(false),
     CLIENT_LOGIN_NAME(false),
+    CLIENT_LOGIN_PASSWORD(false),
     CLIENT_MONTH_BYTES_DOWNLOADED(false),
     CLIENT_MONTH_BYTES_UPLOADED(false),
     CLIENT_NEEDED_SERVERQUERY_VIEW_POWER(false),
@@ -47,7 +48,31 @@ public enum ClientProperty implements Property {
     CONNECTION_FILETRANSFER_BANDWIDTH_RECEIVED(false),
     CONNECTION_FILETRANSFER_BANDWIDTH_SENT(false),
     CONNECTION_PACKETS_RECEIVED_TOTAL(false),
-    CONNECTION_PACKETS_SENT_TOTAL(false);
+    CONNECTION_PACKETS_SENT_TOTAL(false),
+    CLDBID(false),
+    CLID(false),
+
+    // ----------------
+    // used by CmdClientInfo & CmdClientList
+    CLIENT_BASE64HASHCLIENTUID(false),
+    CLIENT_VERSION_SIGN(false),
+    CLIENT_OUTPUTONLY_MUTED(false),
+    CLIENT_BADGES(false),
+    CLIENT_IDLE_TIME(false),
+    CONNECTION_CONNECTED_TIME(false),
+    CLIENT_IS_RECORDING(false),
+    CLIENT_CHANNEL_GROUP_INHERITED_CHANNEL_ID(false),
+    CLIENT_SERVERGROUPS(false),
+    CID(false),
+
+    // ---------------.
+    // used by CmdWhoAmI
+    CLIENT_ID(false),
+    CLIENT_CHANNEL_ID(false),
+    /**
+     * shows where your logged in Query Admin belongs to
+     */
+    CLIENT_ORIGIN_SERVER_ID(false);
 
     private boolean changeable;
 

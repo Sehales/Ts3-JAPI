@@ -1,11 +1,20 @@
 package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
+import net.sehales.ts3_japi.property.BanProperty;
 
 public class CmdBanAdd extends ArrayResponseCommand {
 
     public CmdBanAdd() {
         super("banadd");
+    }
+
+    /**
+     * @return the ban id for this ban
+     */
+    @Override
+    public Integer getResponseWrapper() {
+        return response.getWrapper().getInt(BanProperty.BANID);
     }
 
     public CmdBanAdd withIp(String regexp) {

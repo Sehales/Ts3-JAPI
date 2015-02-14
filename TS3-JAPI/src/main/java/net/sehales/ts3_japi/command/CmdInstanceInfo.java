@@ -12,7 +12,8 @@ public class CmdInstanceInfo extends ArrayResponseCommand {
     /**
      * Take a look at {@link ServerInstanceProperty} for possible properties you can get from that {@link MapWrapper}
      */
+    @Override
     public MapWrapper getResponseWrapper() {
-        return new MapWrapper(response.getResponseData().get(0));
+        return response.getWrapper();
     }
 }

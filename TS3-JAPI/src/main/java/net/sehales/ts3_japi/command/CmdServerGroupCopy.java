@@ -2,6 +2,8 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.GroupDbType;
+import net.sehales.ts3_japi.property.GroupProperty;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdServerGroupCopy extends ArrayResponseCommand {
 
@@ -27,5 +29,15 @@ public class CmdServerGroupCopy extends ArrayResponseCommand {
         add(new KeyValueParameter("name", name));
         add(new KeyValueParameter("tsgid", targetGroupId));
         add(new KeyValueParameter("type", GroupDbType.REGULAR.getIndex()));
+    }
+
+    /**
+     * Take a look at {@link ServerGroupProperty} for possible properties you can get from this {@link MapWrapper}.
+     * 
+     * The returned {@link MapWrapper} only contains {@link GroupProperty#SGID}
+     */
+    @Override
+    public MapWrapper getResponseWrapper() {
+        return response.getWrapper();
     }
 }

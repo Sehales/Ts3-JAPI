@@ -1,7 +1,11 @@
 package net.sehales.ts3_japi.command;
 
+import java.util.List;
+
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.command.parameter.OptionParameter;
+import net.sehales.ts3_japi.property.ClientProperty;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdClientDbList extends ArrayResponseCommand {
 
@@ -17,6 +21,14 @@ public class CmdClientDbList extends ArrayResponseCommand {
     public CmdClientDbList duration(long limit) {
         add(new KeyValueParameter("duration", limit));
         return this;
+    }
+
+    /**
+     * Take a look at {@link ClientProperty} for possible properties you can get from this {@link MapWrapper}
+     */
+    @Override
+    public List<MapWrapper> getResponseWrapper() {
+        return response.getWrapperList();
     }
 
     /**

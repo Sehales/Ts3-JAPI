@@ -2,6 +2,8 @@ package net.sehales.ts3_japi.command;
 
 import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
+import net.sehales.ts3_japi.property.FileTransferInitProperty;
+import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdFtInitUpload extends ArrayResponseCommand {
 
@@ -16,4 +18,12 @@ public class CmdFtInitUpload extends ArrayResponseCommand {
         add(new KeyValueParameter("resume", QueryUtils.toInt(resume)));
     }
 
+    /**
+     * @return A {@link MapWrapper} which contains entries with the keys defined in {@link FileTransferInitProperty} except
+     *         {@link FileTransferInitProperty#SIZE}
+     */
+    @Override
+    public MapWrapper getResponseWrapper() {
+        return response.getWrapper();
+    }
 }
