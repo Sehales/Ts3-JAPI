@@ -14,24 +14,35 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
+import net.sehales.ts3_japi.command.CmdLogin;
 import net.sehales.ts3_japi.exception.QueryException;
 
 public class ServerQuery implements AutoCloseable {
 
+    public static ServerQuery newConnection(String host, int port, String username, String password) throws UnknownHostException, IOException, QueryException {
+        ServerQuery query = new ServerQuery(new ServerQueryConfig().host(host).port(port));
+        CmdLogin login = new CmdLogin(username, password);
+        query.send(login);
+        if (!login.getError().isOk()) {
+            throw new QueryException(login.getError());
+        }
+        return query;
+    }
+
     private ServerQueryConfig               config;
-
     private int                             commandTimeout = 5000;
+
     private ConcurrentLinkedQueue<Sendable> commandQueue   = new ConcurrentLinkedQueue<>();
-
     private ServerQueryAPI                  api;
+
     private Socket                          socket;
-
     BufferedReader                          br;
-    PrintStream                             ps;
 
+    PrintStream                             ps;
     private QueryReader                     queryReader;
     private QueryWriter                     queryWriter;
     private HeartbeatThread                 heartbeat;
+
     long                                    lastCommand    = System.currentTimeMillis();
 
     private ExecutorService                 executor;
@@ -59,7 +70,7 @@ public class ServerQuery implements AutoCloseable {
     public void close() {
         ensureOpen();
         try {
-            executor.awaitTermination(commandTimeout, TimeUnit.MILLISECONDS);
+            executor.awaitTermination((commandTimeout * commandQueue.size()), TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -110,6 +121,13 @@ public class ServerQuery implements AutoCloseable {
 
     public boolean isDebugMode() {
         return debugMode;
+    }
+
+    public boolean isOpen() {
+        if (socket.isConnected()) {
+            return !socket.isClosed();
+        }
+        return false;
     }
 
     private void openConnection() throws UnknownHostException, IOException, QueryException {
