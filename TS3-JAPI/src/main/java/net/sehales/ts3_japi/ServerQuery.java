@@ -60,7 +60,7 @@ public class ServerQuery implements AutoCloseable {
 
     public ServerQueryAPI api() {
         ensureOpen();
-        if (Objects.nonNull(api)) {
+        if (Objects.isNull(api)) {
             api = new ServerQueryAPI(this);
         }
         return api;
