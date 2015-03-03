@@ -46,10 +46,6 @@ public class Server implements Wrapper {
         return clientsOnline;
     }
 
-    public java.lang.Boolean getAutostart() {
-        return autostartProperty().getValue();
-    }
-
     public Integer getClientsOnline() {
         return clientsOnlineProperty().getValue();
     }
@@ -92,6 +88,10 @@ public class Server implements Wrapper {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    public Boolean isAutostart() {
+        return autostartProperty().getValue();
     }
 
     public IntegerProperty machineIdProperty() {
