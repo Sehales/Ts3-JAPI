@@ -1,7 +1,9 @@
 package net.sehales.ts3_japi.wrapper;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,6 +22,7 @@ public class Server implements Wrapper {
     protected LongProperty    uptime             = new SimpleLongProperty();
     protected IntegerProperty machineId          = new SimpleIntegerProperty();
     protected StringProperty  uid                = new SimpleStringProperty();
+    protected BooleanProperty autostart          = new SimpleBooleanProperty();
 
     public Server(MapWrapper serverWrapper) {
         setName(serverWrapper.getOString(VirtualServerProperty.VIRTUALSERVER_NAME).orElse("unknown"));
@@ -32,10 +35,19 @@ public class Server implements Wrapper {
         setUptime(serverWrapper.getOLong(VirtualServerProperty.VIRTUALSERVER_UPTIME).orElse(0L));
         setMachineId(serverWrapper.getOInt(VirtualServerProperty.VIRTUALSERVER_MACHINE_ID).orElse(-1));
         setUid(serverWrapper.getOString(VirtualServerProperty.VIRTUALSERVER_UNIQUE_IDENTIFER).orElse("unknown"));
+        setAutostart(serverWrapper.getOBoolean(VirtualServerProperty.VIRTUALSERVER_AUTOSTART).orElse(false));
+    }
+
+    public BooleanProperty autostartProperty() {
+        return autostart;
     }
 
     public IntegerProperty clientsOnlineProperty() {
         return clientsOnline;
+    }
+
+    public java.lang.Boolean getAutostart() {
+        return autostartProperty().getValue();
     }
 
     public Integer getClientsOnline() {
@@ -102,6 +114,10 @@ public class Server implements Wrapper {
         return queryClientsOnline;
     }
 
+    public void setAutostart(final Boolean autostart) {
+        autostartProperty().setValue(autostart);
+    }
+
     public void setClientsOnline(final Integer clientsOnline) {
         clientsOnlineProperty().setValue(clientsOnline);
     }
@@ -149,7 +165,7 @@ public class Server implements Wrapper {
     @Override
     public String toString() {
         return "Server [name=" + name + ", id=" + id + ", port=" + port + ", status=" + status + ", clientsOnline=" + clientsOnline + ", queryClientsOnline=" + queryClientsOnline + ", maxClients="
-                        + maxClients + ", uptime=" + uptime + ", machineId=" + machineId + ", uid=" + uid + "]";
+                        + maxClients + ", uptime=" + uptime + ", machineId=" + machineId + ", uid=" + uid + ", autostart=" + autostart + "]";
     }
 
     public StringProperty uidProperty() {
