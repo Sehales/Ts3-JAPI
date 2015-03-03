@@ -21,4 +21,9 @@ public abstract class ArrayResponseCommand extends Command {
 
     public abstract Object getResponseWrapper();
 
+    @Override
+    public boolean hasResponse() {
+        return response != null;
+    }
+
 }
