@@ -11,8 +11,46 @@ public class CmdServerCreate extends ArrayResponseCommand {
         super("servercreate");
     }
 
+    public CmdServerCreate addParameter(String key, int value) {
+        add(new KeyValueParameter(key, value));
+        return this;
+    }
+
+    public CmdServerCreate addParameter(String key, long value) {
+        add(new KeyValueParameter(key, value));
+        return this;
+    }
+
     public CmdServerCreate addParameter(String key, String value) {
         add(new KeyValueParameter(key, value));
+        return this;
+    }
+
+    /**
+     * All unchangeable properties passed into it will be ignored
+     * 
+     * @param property
+     * @param value
+     * @return
+     */
+    public CmdServerCreate addParameter(VirtualServerProperty property, int value) {
+        if (property.isChangeable()) {
+            return addParameter(property.toString(), value);
+        }
+        return this;
+    }
+
+    /**
+     * All unchangeable properties passed into it will be ignored
+     * 
+     * @param property
+     * @param value
+     * @return
+     */
+    public CmdServerCreate addParameter(VirtualServerProperty property, long value) {
+        if (property.isChangeable()) {
+            return addParameter(property.toString(), value);
+        }
         return this;
     }
 

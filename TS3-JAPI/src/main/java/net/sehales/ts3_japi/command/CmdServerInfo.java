@@ -13,7 +13,7 @@ public class CmdServerInfo extends ArrayResponseCommand {
      * Take a look at {@link VirtualServerProperty} for possible properties you can get from this {@link MapWrapper}
      */
     @Override
-    public Object getResponseWrapper() {
+    public MapWrapper getResponseWrapper() {
         return response.getWrapper();
     }
 

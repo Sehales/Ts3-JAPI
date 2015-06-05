@@ -15,6 +15,30 @@ public class Server implements Wrapper {
     protected StringProperty  name               = new SimpleStringProperty();
     protected IntegerProperty id                 = new SimpleIntegerProperty();
     protected IntegerProperty port               = new SimpleIntegerProperty();
+
+    /**
+     * The status of a virtual server can be:
+     * online
+     * The virtual server is running and clients can connect
+     * 
+     * offline
+     * The virtual server is not running
+     * 
+     * booting up
+     * The virtual server is currently starting
+     * 
+     * shutting down
+     * The virtual server is currently shutting down
+     * 
+     * deploy running
+     * The virtual server is currently deploying a snapshot
+     * 
+     * virtual online
+     * The virtual server is running *isolated* and clients cannot connect
+     * 
+     * other instance
+     * The virtual server is running in another TeamSpeak 3 instance
+     */
     protected StringProperty  status             = new SimpleStringProperty();
     protected IntegerProperty clientsOnline      = new SimpleIntegerProperty();
     protected IntegerProperty queryClientsOnline = new SimpleIntegerProperty();
