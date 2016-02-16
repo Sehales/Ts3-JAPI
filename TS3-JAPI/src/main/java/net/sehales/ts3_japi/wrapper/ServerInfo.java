@@ -54,14 +54,14 @@ public class ServerInfo extends Server {
     protected IntegerProperty                 reservedSlots                          = new SimpleIntegerProperty();
     protected BooleanProperty                 logServer                              = new SimpleBooleanProperty();
     protected StringProperty                  created                                = new SimpleStringProperty();
+    protected IntegerProperty                 queryClientConnections                 = new SimpleIntegerProperty();
+    protected IntegerProperty                 minClientVersion                       = new SimpleIntegerProperty();
+    protected LongProperty                    totalBytesDownloaded                   = new SimpleLongProperty();
+    protected LongProperty                    bytesSentKeepalive                     = new SimpleLongProperty();
+    protected BooleanProperty                 logClient                              = new SimpleBooleanProperty();
 
     /*
      * TODO
-     * virtualserver_query_client_connections = 2
-     * virtualserver_min_client_version = 1373587200
-     * virtualserver_total_bytes_downloaded = 1000
-     * connection_bytes_sent_keepalive = 0
-     * virtualserver_log_client = 1
      * virtualserver_download_quota = 18446744073709551615
      * connection_filetransfer_bytes_received_total = 0
      * connection_packets_sent_keepalive = 0

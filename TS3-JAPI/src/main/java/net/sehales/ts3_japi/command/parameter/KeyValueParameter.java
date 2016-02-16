@@ -1,6 +1,6 @@
 package net.sehales.ts3_japi.command.parameter;
 
-import net.sehales.ts3_japi.QueryUtils;
+import net.sehales.ts3_japi.util.QueryUtils;
 
 public class KeyValueParameter extends Parameter {
 

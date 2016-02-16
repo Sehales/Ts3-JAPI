@@ -1,8 +1,8 @@
 package net.sehales.ts3_japi.command;
 
-import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.property.FileTransferInitProperty;
+import net.sehales.ts3_japi.util.QueryUtils;
 import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class CmdFtInitUpload extends ArrayResponseCommand {

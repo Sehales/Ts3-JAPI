@@ -12,6 +12,7 @@ import net.sehales.ts3_japi.command.CmdUse;
 import net.sehales.ts3_japi.command.Command;
 import net.sehales.ts3_japi.exception.APIException;
 import net.sehales.ts3_japi.property.VirtualServerProperty;
+import net.sehales.ts3_japi.util.QueryUtils;
 import net.sehales.ts3_japi.util.ResponseUtil;
 import net.sehales.ts3_japi.wrapper.Server;
 import net.sehales.ts3_japi.wrapper.ServerCreationInfo;
@@ -26,6 +27,11 @@ public class ServerQueryAPI {
 
     ServerQueryAPI(ServerQuery query) {
         this.query = query;
+    }
+
+    void close() {
+        query = null;
+        lastCommand = null;
     }
 
     public Command getLastCommand() {
@@ -107,7 +113,7 @@ public class ServerQueryAPI {
         CmdServerList listCmd = new CmdServerList().all().uid();
         send(listCmd);
         APIResponse<CmdServerList, ObservableList<Server>> res = new APIResponse<>(listCmd, (cmd) ->
-                        ResponseUtil.convertServerListResponse(cmd.getResponseWrapper())
+        ResponseUtil.convertServerListResponse(cmd.getResponseWrapper())
                         );
         return res;
     }

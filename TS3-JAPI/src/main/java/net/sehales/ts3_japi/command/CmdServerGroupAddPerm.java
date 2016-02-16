@@ -1,9 +1,9 @@
 package net.sehales.ts3_japi.command;
 
-import net.sehales.ts3_japi.QueryUtils;
 import net.sehales.ts3_japi.command.parameter.ArrayParameter;
 import net.sehales.ts3_japi.command.parameter.KeyValueParameter;
 import net.sehales.ts3_japi.command.parameter.ListParameter;
+import net.sehales.ts3_japi.util.QueryUtils;
 
 public class CmdServerGroupAddPerm extends Command {
     private ArrayParameter array = new ArrayParameter();

@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import net.sehales.ts3_japi.command.CmdLogin;
+import net.sehales.ts3_japi.event.EventManager;
 import net.sehales.ts3_japi.exception.QueryException;
 
 public class ServerQuery implements AutoCloseable {
@@ -34,11 +35,13 @@ public class ServerQuery implements AutoCloseable {
 
     private ConcurrentLinkedQueue<Sendable> commandQueue   = new ConcurrentLinkedQueue<>();
     private ServerQueryAPI                  api;
+    private EventManager                    eventMngr;
 
     private Socket                          socket;
-    BufferedReader                          br;
 
+    BufferedReader                          br;
     PrintStream                             ps;
+
     private QueryReader                     queryReader;
     private QueryWriter                     queryWriter;
     private HeartbeatThread                 heartbeat;
@@ -69,6 +72,9 @@ public class ServerQuery implements AutoCloseable {
     @Override
     public void close() {
         ensureOpen();
+        if (api != null) {
+            api().close();
+        }
         try {
             executor.awaitTermination((commandTimeout * commandQueue.size()), TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
@@ -115,12 +121,23 @@ public class ServerQuery implements AutoCloseable {
         return config;
     }
 
+    public EventManager getEventManger() {
+        if (eventMngr == null) {
+            eventMngr = new EventManager(this);
+        }
+        return eventMngr;
+    }
+
     public long getLastCommandTimestamp() {
         return lastCommand;
     }
 
     public boolean isDebugMode() {
         return debugMode;
+    }
+
+    public boolean isEventManagerPresent() {
+        return eventMngr != null;
     }
 
     public boolean isOpen() {
@@ -143,7 +160,6 @@ public class ServerQuery implements AutoCloseable {
         queryReader.start();
         queryWriter.start();
         heartbeat.start();
-
     }
 
     public void reloadConfig() {

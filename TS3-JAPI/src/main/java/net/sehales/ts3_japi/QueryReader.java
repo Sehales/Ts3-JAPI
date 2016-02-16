@@ -59,7 +59,9 @@ public class QueryReader extends Thread {
                         String line = in.readLine();
                         if (!line.isEmpty()) {
                             if (line.startsWith("notify")) {
-                                // TODO implement an event system
+                                if (query.isEventManagerPresent()) {
+                                    query.getEventManger().parseNotify(line);
+                                }
                                 if (query.isDebugMode()) {
                                     System.out.printf("Event: %s\n", line);
                                 }

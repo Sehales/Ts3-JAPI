@@ -1,4 +1,4 @@
-package net.sehales.ts3_japi;
+package net.sehales.ts3_japi.util;
 
 // found @ http://pastebin.com/hJJVjTit
 public class QueryUtils {

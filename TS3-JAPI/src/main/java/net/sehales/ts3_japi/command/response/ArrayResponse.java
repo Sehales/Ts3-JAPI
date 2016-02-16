@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.sehales.ts3_japi.QueryUtils;
+import net.sehales.ts3_japi.util.QueryUtils;
 import net.sehales.ts3_japi.wrapper.MapWrapper;
 
 public class ArrayResponse extends Response {
